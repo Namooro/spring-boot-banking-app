@@ -3,23 +3,23 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "client")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     @OneToOne
     private Account account;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @Override
@@ -31,6 +31,15 @@ public class User {
                 ", account=" + account +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public User() {
+    }
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {

@@ -8,10 +8,12 @@ import com.example.demo.service.AccountService;
 import com.example.demo.service.TransactionService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Random;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
     @Autowired

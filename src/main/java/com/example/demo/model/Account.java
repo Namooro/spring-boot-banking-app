@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -12,15 +12,23 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "number")
+    @Column(name = "number", nullable = false)
     private Integer accountNumber;
 
     @Column(name = "balance")
     private Double balance;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Transaction> transactionList;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Transaction> transactionList = new ArrayList<>();
+
+    public Account() {
+    }
+
+    public Account(Integer accountNumber, Double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.transactionList = Collections.emptyList();
+    }
 
     @Override
     public String toString() {

@@ -8,14 +8,18 @@ import java.time.LocalDate;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, updatable = false)
+    @Column(name = "id", updatable = false)
     private Long id;
-    @Column(name = "date", nullable = false)
+
+    @Column(name = "date")
     private LocalDate transactionDate;
-    @Column(name = "comment", nullable = false)
+
+    @Column(name = "comment")
     private String comment;
+
     @Column(name = "amount")
     private double amount;
+
     @ManyToOne
     @JoinColumn(name = "accountNumber")
     private Account account;
@@ -29,6 +33,9 @@ public class Transaction {
                 ", amount=" + amount +
                 ", account=" + account +
                 '}';
+    }
+
+    public Transaction() {
     }
 
     public Transaction(LocalDate transactionDate, String comment, double amount, Account account) {
