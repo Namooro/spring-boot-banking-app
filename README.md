@@ -1,2 +1,2 @@
 # Demo 
-This app should show simple banking application
+This app shows simple banking application
